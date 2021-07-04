@@ -29,7 +29,7 @@ const Splashscreens = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>
-                <StatusBar backgroundColor={'skyblue'} barStyle="dark-content" />
+                <StatusBar backgroundColor={'#34b4eb'} barStyle="dark-content" />
                 <Animated.View style={[styles.quotesContainer, { opacity: fadeOut }]}>
                     <Text style={styles.quotes}>"Quote Example"</Text>
                 </Animated.View>
@@ -44,7 +44,7 @@ const Splashscreens = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'skyblue'
+        backgroundColor: '#34b4eb'
     },
     quotesContainer: {
         flex: 1,

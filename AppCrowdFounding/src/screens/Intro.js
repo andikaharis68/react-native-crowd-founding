@@ -9,17 +9,17 @@ const data = [
     {
         id: 1,
         image: require('../assets/images/Undraw1.png'),
-        description: 'Description Text 1'
+        description: 'Easy to join'
     },
     {
         id: 2,
         image: require('../assets/images/Undraw2.png'),
-        description: 'Description Text 2'
+        description: 'Build your profile'
     },
     {
         id: 3,
         image: require('../assets/images/Undraw3.png'),
-        description: 'Description Text 3'
+        description: 'More connection'
     }
 ]
 
@@ -28,11 +28,11 @@ const Intro = ({ navigation }) => {
     //tampilan onboarding yang ditampilkan dalam renderItem
     const renderItem = ({ item }) => {
         return (
-            <View style={{flex: 1}}>
+            <View style={styles.container}>
                 <View style={{flex:3}}>
                     <Image source={item.image} style={{height:250, width:380}}  />
                 </View>
-                <Text style={{flex:1, textAlign:'center', color:'skyblue'}}>{item.description}</Text>
+                <Text style={{flex:1, textAlign:'center', color:'#34b4eb'}}>{item.description}</Text>
             </View>
         )
     }
@@ -41,7 +41,7 @@ const Intro = ({ navigation }) => {
             <View style={styles.container}>
                 <StatusBar backgroundColor={'white'} barStyle="light-content" />
                 <View style={{flex:1}}>
-                    <Text style={styles.textLogo}>Crowd Funding</Text>
+                    <Text style={styles.textLogo}>Crowd Funding App.</Text>
                 </View>
                 <View style={{flex:3}}>
                     {/* contoh menggunakan component react native app intro slider */}
@@ -50,16 +50,16 @@ const Intro = ({ navigation }) => {
                         renderItem={renderItem} // untuk menampilkan onBoarding dar data array
                         renderNextButton={() => null}
                         renderDoneButton={() => null}
-                        activeDotStyle={{backgroundColor:'skyblue'}}
+                        activeDotStyle={{backgroundColor:'#34b4eb'}}
                         keyExtractor={(item) => item.id.toString()}
                     />
                 </View>
                 <View style={{flex:1}}>
-                    <TouchableOpacity style={{height:45, borderRadius:0, backgroundColor:'skyblue', marginBottom:10, marginHorizontal:40}} >
+                    <TouchableOpacity style={styles.btnMasuk} >
                         <Text style={{textAlign:'center', marginTop:12, color:'white', fontWeight:'bold'}}>MASUK</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{height:45, borderRadius:0, borderWidth:3, borderColor:'skyblue', marginBottom:20, marginHorizontal:40}} onPress={() => navigation.navigate('Register')}>
-                        <Text style={{textAlign:'center', marginTop:10, color:'skyblue', fontWeight:'bold'}}>DAFTAR</Text>
+                    <TouchableOpacity style={styles.btnDaftar} onPress={() => navigation.navigate('Register')}>
+                        <Text style={{textAlign:'center', marginTop:10, color:'#34b4eb', fontWeight:'bold'}}>DAFTAR</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -69,27 +69,29 @@ const Intro = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor:'white'
     },
-    quotesContainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+    btnMasuk:{
+        height:45, 
+        borderRadius:0, 
+        backgroundColor:'#34b4eb', 
+        marginBottom:10, 
+        marginHorizontal:40
     },
-    quotes: {
-        fontSize: 14,
-        color: 'white'
-    },
-    logo: {
-        alignItems: 'center',
-        justifyContent: 'flex-end'
+    btnDaftar:{
+        height:45, 
+        borderRadius:0, 
+        borderWidth:3, 
+        borderColor:'#34b4eb', 
+        marginBottom:20, 
+        marginHorizontal:40
     },
     textLogo: {
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: 'bold',
         textAlign:"center",
-        marginTop:50,
-        color: 'skyblue'
+        marginTop:40,
+        color: '#34b4eb'
     }
 })
 
