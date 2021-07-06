@@ -8,17 +8,17 @@ import AppIntroSlider from 'react-native-app-intro-slider'
 const data = [
     {
         id: 1,
-        image: require('../assets/images/Undraw1.png'),
+        image: require('../../assets/images/Undraw1.png'),
         description: 'Easy to join'
     },
     {
         id: 2,
-        image: require('../assets/images/Undraw2.png'),
+        image: require('../../assets/images/Undraw2.png'),
         description: 'Build your profile'
     },
     {
         id: 3,
-        image: require('../assets/images/Undraw3.png'),
+        image: require('../../assets/images/Undraw3.png'),
         description: 'More connection'
     }
 ]
@@ -55,10 +55,10 @@ const Intro = ({ navigation }) => {
                     />
                 </View>
                 <View style={{flex:1}}>
-                    <TouchableOpacity style={styles.btnMasuk} >
+                    <TouchableOpacity style={styles.btnMasuk} onPress={() => navigation.navigate('SignIn')}>
                         <Text style={{textAlign:'center', marginTop:12, color:'white', fontWeight:'bold'}}>MASUK</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btnDaftar} onPress={() => navigation.navigate('Register')}>
+                    <TouchableOpacity style={styles.btnDaftar} >
                         <Text style={{textAlign:'center', marginTop:10, color:'#34b4eb', fontWeight:'bold'}}>DAFTAR</Text>
                     </TouchableOpacity>
                 </View>
