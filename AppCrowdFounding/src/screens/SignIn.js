@@ -1,89 +1,134 @@
 import React from 'react'
-import { View, Text, StatusBar, Image, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import {View, TextInput, Text, StyleSheet, StatusBar, Image, TouchableOpacity} from 'react-native'
 
-export default function SignIn() {
+export default function SignIn({ navigation: { goBack } }) {
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor={'#34b4eb'} barStyle="light-content" />
-            <View style={styles.containerAccount}>
-                <Text style={styles.textAccount}>Account</Text>
+            <View style={styles.containerMasuk}>
+                <Text style={styles.textMasuk}>Masuk</Text>
             </View>
-            <View style={styles.containerProfile}>
-                <View style={styles.imageProfile}></View>
-                <Text style={styles.textProfile}>Moch. Andika Haris</Text>
-            </View>
-            <View style={styles.containerMenu}>
-                <Image style={styles.imageMenu} source={require('../../assets/images/wallet.png')}/>
-                <Text style={{fontSize:18, flex:1}}>Saldo</Text>
-                <Text style={{fontSize:18, marginHorizontal:20}}>Rp. 2.000.000</Text>
-            </View>
-            <View style={styles.containerMenu}>
-                <Image style={styles.imageMenu} source={require('../../assets/images/settings.png')}/>
-                <Text style={styles.textMenu}>Pengaturan</Text>
-            </View>
-            <View style={styles.containerMenu}>
-                <Image style={styles.imageMenu} source={require('../../assets/images/help.png')}/>
-                <Text style={styles.textMenu}>Bantuan</Text>
-            </View>
-            <View style={styles.containerMenu}>
-                <Image style={styles.imageMenu} source={require('../../assets/images/terms.png')}/>
-                <Text style={styles.textMenu}>Syarat & Ketentuan</Text>
-            </View>
-          
-            <View style={styles.containerMenu}>
-                <Image style={styles.imageMenu} source={require('../../assets/images/exit.png')}/>
-                <Text style={styles.textMenu}>Keluar</Text>
+            <View style={styles.containerLogin}>
+                <Text style={styles.textLogin}>Silahkan login untuk mengakses semua fitur yang ada dalam Aplikasi Crowd Founding</Text>
+                <View style={styles.containerInput}>
+                    <TextInput style={styles.textInput} placeholder='Username'></TextInput>
+                    <TextInput style={styles.textInput} placeholder='Password'></TextInput>
+                </View>
+                <TouchableOpacity style={styles.btnLogin}>
+                    <Text style={styles.textBtnLogin}>LOGIN</Text>
+                </TouchableOpacity>
+                <View style={styles.containerDaftar}>
+                    <Text style={{fontSize:16}}>Belum punya akun?</Text>
+                    <TouchableOpacity>
+                        <Text style={styles.textDaftar}>Daftar</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.containerFinger}>
+                    <Text style={styles.textCepat}>Atau lebih cepat dengan</Text>
+                    <View style={styles.viewBtn}>
+                        <TouchableOpacity style={styles.btnCepat}>
+                            <Image style={styles.imageCepat} source={require('../../assets/images/fingerprint.png')}/>
+                            <Text style={{fontWeight:'bold'}}>Fingerprint</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.btnCepat}>
+                            <Image style={styles.imageCepat} source={require('../../assets/images/search.png')}/>
+                            <Text style={{fontWeight:'bold'}}>Sign in</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
         </View>
-    )    
+    )
 }
 
 const styles = StyleSheet.create({
     container : {
-        flex:1, 
-        backgroundColor:'#e9ebf0'
+        flex:1,
     },
-    containerAccount : {
+    containerMasuk : {
         backgroundColor:'#34b4eb', 
         height:65
     },
-    textAccount : {
+    textMasuk : {
         fontSize:25, 
         color:'white', 
         fontWeight:'bold', 
         marginTop:13, 
         marginLeft:20
+    }, 
+    containerLogin:{
+        marginHorizontal:25, 
+        marginVertical: 20
     },
-    containerProfile : {
-        backgroundColor:'white',
-        height:80, 
-        flexDirection:'row',
+    textLogin: {
+        fontWeight:'bold', 
+        fontSize:18
+    },
+    containerInput: { 
+        height:140, 
+        marginVertical:20, 
+        justifyContent:'space-between'
+    },
+    textInput: {
+        height:60, 
+        borderBottomWidth:2, 
+        borderColor:'gray'
+    },
+    btnLogin : {
+        elevation:10, 
+        borderRadius:5, 
+        height:45, 
+        backgroundColor:'#34b4eb', 
+        alignItems:'center', 
+        justifyContent:'center'
+    },
+    textBtnLogin: {
+        fontSize:18, 
+        color:'white', 
+        fontWeight:'bold'
+    },
+    containerDaftar: {
+        height:50, 
+        marginVertical:10, 
+        flexDirection:'row', 
+        justifyContent:'center', 
         alignItems:'center'
     },
-    imageProfile : {
-        height:50, 
-        width:50, 
-        backgroundColor:'gray', 
-        borderRadius:50, 
-        marginHorizontal:20
-    },
-    textProfile : {
-        fontSize:20, 
+    textDaftar:{
+        fontSize:16, 
+        color:'#34b4eb', 
+        marginLeft:5, 
         fontWeight:'bold'
-    }, 
-    containerMenu : {
-        backgroundColor:'white', 
-        height:65, 
+    },
+    containerFinger: {
+        height:100,
+        marginTop:90, 
+        justifyContent:'center', 
+        alignItems:'center'
+    },
+    textCepat: {
+        flex:1, 
+        fontSize:18, 
+        fontWeight:'bold'
+    },
+    viewBtn : {
+        flex:1, 
         flexDirection:'row', 
-        alignItems:'center',
-        marginTop: 2
+        paddingHorizontal:20
     },
-    imageMenu : {
-        height:30, 
-        width:30, 
-        marginHorizontal:20
+    btnCepat : {
+        flex:1, 
+        flexDirection:'row', 
+        justifyContent:'space-around', 
+        alignItems:'center', 
+        marginHorizontal:10, 
+        height:45, 
+        elevation:2
     },
-    textMenu : {
-        fontSize : 18
-    }
+    imageCepat : {
+        height:25, 
+        width:25
+    },
+        
 })
+
