@@ -1,7 +1,30 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { View, Text, StatusBar, Image, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export default function Account({ navigation: { goBack } }) {
+export default function Account({ navigation }) {     
+
+    useEffect(() => {
+        async function getToken(){
+            try {
+                const token = await AsyncStorage.getItem("token")
+                console.log("token", token)
+            } catch(e) {    
+                console.log("error", e)
+            }
+        }
+        getToken()
+    }, [])
+
+    const onPressLogout = async () => {
+        try {
+            await AsyncStorage.removeItem("token")
+            navigation.navigate("SignIn")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <View style={styles.container}>
             <StatusBar backgroundColor={'#34b4eb'} barStyle="light-content" />
@@ -29,7 +52,7 @@ export default function Account({ navigation: { goBack } }) {
                 <Image style={styles.imageMenu} source={require('../../assets/images/terms.png')}/>
                 <Text style={styles.textMenu}>Syarat & Ketentuan</Text>
             </View>
-            <TouchableOpacity style={styles.containerMenu} onPress={() => goBack()}>
+            <TouchableOpacity style={styles.containerMenu} onPress={onPressLogout}>
                 <Image style={styles.imageMenu} source={require('../../assets/images/exit.png')}/>
                 <Text style={styles.textMenu}>Keluar</Text>
             </TouchableOpacity>
